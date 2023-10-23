@@ -26,9 +26,15 @@ namespace TravelPal
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow mainWindow = new();
+            mainWindow.Show();
+            Close();
         }
         private void tbkProfile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void tbkInfo_Click(object sender, RoutedEventArgs e)
         {
 
         }
