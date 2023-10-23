@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TravelPal.Enums
+namespace TravelPal.Enums;
+
+public enum EuropeanCountry
 {
-    internal class EuropeanCountry
-    {
-    }
 }
