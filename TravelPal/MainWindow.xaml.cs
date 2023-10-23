@@ -24,5 +24,14 @@ namespace TravelPal
         {
             InitializeComponent();
         }
+
+        private void btnSignIn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void tbkRegister_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

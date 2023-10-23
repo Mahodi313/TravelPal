@@ -5,8 +5,86 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Sign in" Height="400" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#7B68EE">
     <Grid>
+        <!--Grid-->
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <!--Elements-->
+
+        <Label Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" Content="TRAVELPAL" FontSize="25" FontWeight="Medium" FontFamily="Arial" Foreground = "#F5FFFA" />
+        <Label Grid.Column="2" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="Username"/>
+
+        <Border Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="5" Background="#A095F2" Margin="100 10 100 10" CornerRadius="20" BorderBrush="#F5FFFA" BorderThickness="2"/>
+        <!--Labels for border-->
+        <Label Grid.Column="2" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Content="Username" Foreground = "#F5FFFA" FontFamily="Arial" FontSize="14"/>
+        <Label Grid.Column="2" Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Password" Foreground = "#F5FFFA" FontFamily="Arial" Margin="0 0 25 0" FontSize="14"/>
+
+        <!--Textboxes for border-->
+        <TextBox Name="txtUsername" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Top" Height="25" Margin="5 0 5 0" Grid.RowSpan="2" VerticalContentAlignment="Center" />
+        <PasswordBox Name ="txtPassword"  Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalAlignment="Top"  Height="25" VerticalContentAlignment="Center"  Margin="5 26 5 0"/>
+        
+        
+        <!--Buttons for border-->
+        <Button Name="btnSignIn" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="30" Width="100" Background="Transparent" BorderBrush="#F5FFFA" Content="Sign in" FontSize="14" Foreground="#F5FFFA" FontFamily="Arial" Margin="0 10 0 0" Click="btnSignIn_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <TextBlock Name="tbkRegister" Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Hyperlink Click="tbkRegister_Click">
+                <Hyperlink.Style>
+                    <Style TargetType="Hyperlink"
+                        BasedOn="{StaticResource {x:Type Hyperlink}}">
+                        <Setter Property="Foreground" Value="#F5FFFA"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Foreground" Value="#A095F2"/>
+                            </Trigger>               
+                        </Style.Triggers>
+                        </Style>
+                </Hyperlink.Style>
+                Create a new account
+            </Hyperlink>
+        </TextBlock>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </Grid>
 </Window>
