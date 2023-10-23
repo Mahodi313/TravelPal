@@ -27,9 +27,7 @@ namespace TravelPal
 
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
-            TravelWindow travelWindow = new TravelWindow();
-            travelWindow.Show();
-            Close();
+
         }
         private void tbkRegister_Click(object sender, RoutedEventArgs e)
         {
