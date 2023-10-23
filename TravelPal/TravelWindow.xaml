@@ -67,7 +67,7 @@
             </Hyperlink>
         </TextBlock>
 
-        <TextBlock Name="tbkInfo" Grid.Column="5" Grid.Row="2" FontSize="16" Grid.ColumnSpan="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial">
+        <TextBlock Name="tbkInfo" Grid.Column="1" Grid.Row="2" FontSize="16" Grid.ColumnSpan="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial">
             <Hyperlink Click="tbkInfo_Click">
                 <Hyperlink.Style>
                     <Style TargetType="Hyperlink"
