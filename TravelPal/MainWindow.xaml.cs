@@ -31,7 +31,9 @@ namespace TravelPal
         }
         private void tbkRegister_Click(object sender, RoutedEventArgs e)
         {
-
+            RegisterWindow registerWindow = new();
+            registerWindow.Show();
+            Close();
         }
     }
 }

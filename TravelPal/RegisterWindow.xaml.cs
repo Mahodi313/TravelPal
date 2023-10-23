@@ -23,5 +23,18 @@ namespace TravelPal
         {
             InitializeComponent();
         }
+
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            
+            MainWindow mainWindow = new();
+            mainWindow.Show();
+            Close();
+        }
     }
 }

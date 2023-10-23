@@ -63,10 +63,10 @@
         <!--Combobox and button for border-->
         <ComboBox Name="cbCountry" Grid.Column="4" Grid.Row="4" Grid.ColumnSpan="3" Margin="68 0 100 25" VerticalContentAlignment="Center"/>
 
-        <Button Name="btnCreate" Grid.Column="4" Grid.Row="8" Grid.ColumnSpan="2" Margin="80 0 0 10" Background="Transparent" BorderBrush="#F5FFFA" Content="Create account" FontSize="14" Foreground="#F5FFFA" FontFamily="Arial"/>
+        <Button Name="btnCreate" Grid.Column="4" Grid.Row="8" Grid.ColumnSpan="2" Margin="80 0 0 10" Background="Transparent" BorderBrush="#F5FFFA" Content="Create account" FontSize="14" Foreground="#F5FFFA" FontFamily="Arial" Click="btnCreate_Click"/>
         <!--*************-->
 
-        <Button Name="btnGoBack" Grid.Column="3" Grid.Row="10" Grid.ColumnSpan="2" Content="Go back" Background="Transparent" BorderBrush="#F5FFFA" FontSize="14" Foreground="#F5FFFA" Margin="15 5 15 5"/>
+        <Button Name="btnGoBack" Grid.Column="3" Grid.Row="10" Grid.ColumnSpan="2" Content="Go back" Background="Transparent" BorderBrush="#F5FFFA" FontSize="14" Foreground="#F5FFFA" Margin="15 5 15 5" Click="btnGoBack_Click"/>
 
 
 
