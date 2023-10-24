@@ -36,12 +36,12 @@
         <Border Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="6" BorderBrush="#F5FFFA" BorderThickness="2" Background="#A095F2" CornerRadius="200" Margin="50 10 50 10" />
         <Border Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="#F5FFFA" BorderThickness="1" Background="#A095F2" CornerRadius="20"/>
 
-        <Label Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="Travels" Foreground="#F5FFFA" FontSize="16" FontFamily="Arial"/>
+        
 
         <ListView Name="lstTravels" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="4">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Countries" DisplayMemberBinding="{Binding Country}" Width="300"/>
+                    <GridViewColumn Header="Travels" Width="300"/>
                 </GridView>
             </ListView.View>
         </ListView>

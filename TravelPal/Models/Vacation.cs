@@ -18,12 +18,9 @@ namespace TravelPal.Models
 
         public override string GetInfo()
         {   
-            if (AllInclusive) 
-            {
-                return $"{Country} - All Inclusive - Date: {StartDate.Day}/{StartDate.Month}/{StartDate.Year} - Length: {TravelDays} days.";
-            }
 
-            return base.GetInfo();
+            return $"Vacation - {Country} - Date: {StartDate.Day}/{StartDate.Month}/{StartDate.Year}";
+            
         }
     }
 }

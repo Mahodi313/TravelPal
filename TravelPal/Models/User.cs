@@ -19,7 +19,7 @@ public class User : IUser
     public string Password { get; set; }
     public Country Location { get; set; }
 
-    public List<Travel> Travels { get; set; }
+    public List<Travel> Travels { get; set; } = new();
 
     public User(int id, string firstname, string lastname, string username, string email, DateTime birthday, string password, Country location)
     {
