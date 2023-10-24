@@ -16,6 +16,7 @@ public class User : IUser
     public string Username { get; set; }
     public string Email { get; set; }
     public DateTime Birthday { get; set; }
+    public int Age { get; set; }
     public string Password { get; set; }
     public Country Location { get; set; }
 
@@ -32,5 +33,21 @@ public class User : IUser
         Password = password;
         Location = location;
         Travels = travels;
+        Age = CalculateAge();
+    }
+
+    private int CalculateAge() 
+    {
+        DateTime currentDate = DateTime.Now;
+
+        int age = currentDate.Year - Birthday.Year;
+
+        // Check if the birthday has occurred this year
+        if (Birthday.Date > currentDate.Date.AddYears(-age))
+        {
+            age--; // The birthday has not occurred yet this year
+        }
+
+        return age;
     }
 }

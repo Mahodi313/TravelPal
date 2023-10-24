@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TravelPal.Managers;
 using TravelPal.Models;
 using TravelPal.User_Models;
 
@@ -39,6 +40,7 @@ namespace TravelPal
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
+            UserManager.SignedInUser = null;
             MainWindow mainWindow = new();
             mainWindow.Show();
             Close();

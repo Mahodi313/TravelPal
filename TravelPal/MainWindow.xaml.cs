@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,7 +53,8 @@ namespace TravelPal
             }
             catch (ArgumentException ex) 
             {
-                MessageBox.Show(ex.Message);    
+                
+                MessageBox.Show(ex.Message, "Warning!",MessageBoxButton.OK, MessageBoxImage.Error);    
             }
 
         }
