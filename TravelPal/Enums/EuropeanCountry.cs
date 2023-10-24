@@ -8,4 +8,14 @@ namespace TravelPal.Enums;
 
 public enum EuropeanCountry
 {
+    Albania,
+    Belgium,
+    Bosnia,
+    Croatia,
+    Denmark,
+    France,
+    Netherlands,
+    Russia,
+    Sweden,
+    Turkey
 }
