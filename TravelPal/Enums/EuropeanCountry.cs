@@ -15,7 +15,10 @@ public enum EuropeanCountry
     Denmark,
     France,
     Netherlands,
+    Poland,
+    Romania,
     Russia,
     Sweden,
-    Turkey
+    Turkey,
+    Ukraine
 }
