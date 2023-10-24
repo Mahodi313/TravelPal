@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TravelPal.Models;
+using TravelPal.User_Models;
 
 namespace TravelPal
 {
@@ -19,9 +21,20 @@ namespace TravelPal
     /// </summary>
     public partial class TravelWindow : Window
     {
-        public TravelWindow()
+        public TravelWindow(User user)
         {
             InitializeComponent();
+
+            lblGreetUser.Content = $"Welcome {user.Username}!";
+
+            foreach (Travel travels in user.Travels) 
+            {
+                ListViewItem travelItem = new ListViewItem();
+                travelItem.Content = travels.GetInfo();
+                travelItem.Tag = travels;
+
+                lstTravels.Items.Add(travelItem);
+            }
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)

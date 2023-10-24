@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TravelPal.Enums;
 using TravelPal.Models;
 using TravelPal.User_Models;
@@ -66,7 +67,30 @@ public static class UserManager
     public static bool SignInUser(string username, string password) 
     {   
         //TODO: IMPLEMENT LOGIC FOR CHECKING IF USER CAN SIGN IN
+
+        foreach (var user in users) 
+        {
+            if (username == user.Username && password == user.Password) 
+            {
+                if (user is User costumer) 
+                {
+                    TravelWindow travelWindow = new(costumer);
+                    travelWindow.Show();
+
+                    SignedInUser = costumer;
+                }
+                else if (user is Admin admin) 
+                {
+                    //ADD ADMIN WINDOW
+                    //TravelWindow travelWindow = new(admin);
+                    //travelWindow.Show();
+                    SignedInUser = admin;
+                }
+                    return true;
+            }
+        }
         return false;
     }
+
 
 }
