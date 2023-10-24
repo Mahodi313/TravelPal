@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TravelPal.Enums;
+using TravelPal.Models;
 
 namespace TravelPal.User_Models;
 
@@ -17,9 +18,8 @@ public class User : IUser
     public DateTime Birthday { get; set; }
     public string Password { get; set; }
     public Country Location { get; set; }
-    
-    //TODO: ADD LATER WHEN TRAVEL CLASS IS CREATED
-    //public List<Travel> Travels { get; set; }
+
+    public List<Travel> Travels { get; set; }
 
     public User(int id, string firstname, string lastname, string username, string email, DateTime birthday, string password, Country location)
     {
