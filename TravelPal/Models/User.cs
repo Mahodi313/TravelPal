@@ -21,7 +21,7 @@ public class User : IUser
 
     public List<Travel> Travels { get; set; } = new();
 
-    public User(int id, string firstname, string lastname, string username, string email, DateTime birthday, string password, Country location)
+    public User(int id, string firstname, string lastname, string username, string email, DateTime birthday, string password, Country location, List<Travel> travels)
     {
         Id = id;
         Firstname = firstname;
@@ -31,5 +31,6 @@ public class User : IUser
         Birthday = birthday;
         Password = password;
         Location = location;
+        Travels = travels;
     }
 }
