@@ -91,10 +91,7 @@ namespace TravelPal
                     }
 
                     throw new ArgumentException ("The username or email already exists! Try again.");                  
-                }
-
-
-                
+                }              
             }
             catch (ArgumentException ex) 
             {
