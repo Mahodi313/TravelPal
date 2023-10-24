@@ -12,13 +12,12 @@ namespace TravelPal.Managers;
 
 public static class UserManager
 {
-    private static int _idCounter = 2;
 
     public static List<IUser> users = new()
     {
-        new Admin("Mahdi", "Ali", "admin", "Mahdi.Ali@edu.newton.se", "password", Enums.Country.Sweden),
+        new Admin("Mahdi", "Ali", "admin", "Mahdi.Ali@edu.newton.se", "password", Enums.Country.Sweden, DateTime.Parse("2002-10-24")),
 
-        new User(1, "Dr", "Horse", "user", "Dr.Horse@edu.newton.se", DateTime.Parse("2023-10-24"), "password",Country.Sweden, new List<Travel> {
+        new User("Dr", "Horse", "user", "Dr.Horse@edu.newton.se", DateTime.Parse("2002-10-24"), "password",Country.Sweden, new List<Travel> {
 
         new Vacation("Copenhagen", Country.Denmark, 1, new List<PackingListItem>{new TravelDocument("Passport", false), new OtherItem("Kinder", 1)}, DateTime.Parse("2023-10-24"), DateTime.Parse("2023-11-05"), true),
         new WorkTrip("Chennai", Country.India, 2, new List<PackingListItem>{new TravelDocument("Passport", true), new TravelDocument("Visum", true), new OtherItem("Kinder", 1)}, DateTime.Parse("2023-12-23"), DateTime.Parse("2023-01-07"), "Meeting with Kim Jong Un")
@@ -30,8 +29,22 @@ public static class UserManager
 
     public static bool AddUser(IUser user) 
     {   
-        //TODO: IMPLEMENT LOGIC FOR ADDING NEW USER
-        return false;
+        //if email and username don't exist, return true, else return false
+        string username = user.Username;
+        string email = user.Email;
+
+        bool isUsernameAvailable = ValidateUserName(username);
+        bool isEmailAvailable = ValidateEmail(email);
+
+        if (isUsernameAvailable && isEmailAvailable && user.Age >= 16) 
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+
     }
 
     public static void RemoveUser(IUser user) 
@@ -47,9 +60,15 @@ public static class UserManager
 
     private static bool ValidateUserName(string userName) 
     {   
-        //TODO: IMPLEMENT LOGIC FOR CHECKING IF USERNAME IS AVAILABLE
-        return false;
-        
+        foreach(var user in users) 
+        {
+            // If the username already exists in the list of users return false because it's not available. Return true if available
+            if (userName == user.Username) 
+            {
+                return false;
+            } 
+        }
+        return true;
     }
     public static bool UpdateEmail(IUser user, string choosenEmail)
     {
@@ -59,9 +78,15 @@ public static class UserManager
 
     private static bool ValidateEmail(string email)
     {
-        //TODO: IMPLEMENT LOGIC FOR CHECKING IF EMAIL IS AVAILABLE
-        return false;
-
+        foreach (var user in users)
+        {   
+            // If the email already exists in the list of users return false because it's not available. Return true if available
+            if (email == user.Email)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static bool SignInUser(string username, string password) 

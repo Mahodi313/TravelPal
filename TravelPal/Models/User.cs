@@ -10,9 +10,9 @@ namespace TravelPal.User_Models;
 
 public class User : IUser
 {
-    public int Id { get; set; }
     public string Firstname { get; set; }
     public string Lastname { get; set; }
+    public string Fullname { get; set; }
     public string Username { get; set; }
     public string Email { get; set; }
     public DateTime Birthday { get; set; }
@@ -22,9 +22,8 @@ public class User : IUser
 
     public List<Travel> Travels { get; set; } = new();
 
-    public User(int id, string firstname, string lastname, string username, string email, DateTime birthday, string password, Country location, List<Travel> travels)
+    public User(string firstname, string lastname, string username, string email, DateTime birthday, string password, Country location, List<Travel> travels)
     {
-        Id = id;
         Firstname = firstname;
         Lastname = lastname;
         Username = username;
@@ -34,6 +33,7 @@ public class User : IUser
         Location = location;
         Travels = travels;
         Age = CalculateAge();
+        Fullname = Firstname + " " + Lastname;
     }
 
     private int CalculateAge() 

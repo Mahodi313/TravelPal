@@ -52,13 +52,13 @@
         <Label Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="Choose country" Foreground="#F5FFFA" FontFamily="Arial"/>
         
         <!--TextBoxes for border-->
-        <TextBox Name="txtFirstname" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Margin="10 21 100 0"/>
-        <TextBox Name="txtLastname" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Height="25" Margin="10 0 100 0"/>
-        <TextBox Name="txtUsername" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Height="25" Margin="10 0 100 0"/>
-        <TextBox Name="txtEmail" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3" Height="25" Margin="10 0 100 0"/>
+        <TextBox Name="txtFirstname" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" VerticalContentAlignment="Center" Margin="10 21 100 0"/>
+        <TextBox Name="txtLastname" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" VerticalContentAlignment="Center" Height="25" Margin="10 0 100 0"/>
+        <TextBox Name="txtUsername" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" VerticalContentAlignment="Center" Height="25" Margin="10 0 100 0"/>
+        <TextBox Name="txtEmail" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3" VerticalContentAlignment="Center" Height="25" Margin="10 0 100 0"/>
         <TextBox Name="txtBirthday" Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="3" VerticalAlignment="Top" Height="25" VerticalContentAlignment="Center" Margin="10 0 100 0"/>
-        <TextBox Name="txtPassword" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="3" VerticalAlignment="Top" Height="25" VerticalContentAlignment="Center" Margin="10 0 100 0"/>
-        <TextBox Name="txtConfirmPassword" Grid.Column="2" Grid.Row="9" Grid.ColumnSpan="3" VerticalAlignment="Top" Margin="10 0 100 0" Height="25" VerticalContentAlignment="Center"/>
+        <PasswordBox Name="txtPassword" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="3" VerticalAlignment="Top" Height="25" VerticalContentAlignment="Center" Margin="10 0 100 0"/>
+        <PasswordBox Name="txtConfirmPassword" Grid.Column="2" Grid.Row="9" Grid.ColumnSpan="3" VerticalAlignment="Top" Margin="10 0 100 0" Height="25" VerticalContentAlignment="Center"/>
         
         <!--Combobox and button for border-->
         <ComboBox Name="cbCountry" Grid.Column="4" Grid.Row="4" Grid.ColumnSpan="3" Margin="68 0 100 25" VerticalContentAlignment="Center"/>

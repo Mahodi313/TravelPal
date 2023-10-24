@@ -16,8 +16,10 @@ public class Admin : IUser
     public string Email { get; set; }
     public string Password { get; set; }
     public Country Location { get; set; }
+    public DateTime Birthday { get; set; }
+    public int Age { get; set; }
 
-    public Admin(string firstname, string lastname, string username, string email, string password, Country location)
+    public Admin(string firstname, string lastname, string username, string email, string password, Country location, DateTime birthday)
     {
         Firstname = firstname;
         Lastname = lastname;
@@ -26,5 +28,22 @@ public class Admin : IUser
         Password = password;
         Location = location;
         Fullname = Firstname + " " + Lastname;
+        Birthday = birthday;
+        Age = CalculateAge();
+    }
+
+    private int CalculateAge()
+    {
+        DateTime currentDate = DateTime.Now;
+
+        int age = currentDate.Year - Birthday.Year;
+
+        // Check if the birthday has occurred this year
+        if (Birthday.Date > currentDate.Date.AddYears(-age))
+        {
+            age--; // The birthday has not occurred yet this year
+        }
+
+        return age;
     }
 }

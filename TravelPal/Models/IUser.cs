@@ -15,5 +15,7 @@ public interface IUser
     public string Email { get; set; }
     public string Password { get; set; }
     public Country Location { get; set; }
+    public DateTime Birthday { get; set; }
+    public int Age { get; set; }
 
 }

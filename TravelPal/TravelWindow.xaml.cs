@@ -41,6 +41,7 @@ namespace TravelPal
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             UserManager.SignedInUser = null;
+
             MainWindow mainWindow = new();
             mainWindow.Show();
             Close();
