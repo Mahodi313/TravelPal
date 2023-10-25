@@ -96,8 +96,27 @@ namespace TravelPal
 
         private void btnDetailsTravels_Click(object sender, RoutedEventArgs e)
         {
-            TravelWindowDetails travelWindowDetails = new TravelWindowDetails();
-            travelWindowDetails.Show();
+            try 
+            {
+                ListViewItem? selectedItem = lstTravels.SelectedItem as ListViewItem;
+
+                if (selectedItem == null) 
+                {
+                    throw new NullReferenceException("You need to select a travel before proceeding!");
+                }
+                else 
+                {
+                    Travel selectedTravel = (Travel)selectedItem.Tag;
+
+                    TravelWindowDetails travelWindowDetails = new(selectedTravel);
+                    travelWindowDetails.Show();
+                }
+            }
+            catch (NullReferenceException ex) 
+            {
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }            
         }
+
     }
 }

@@ -53,7 +53,7 @@
         <Label Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Content="From" FontSize="16" Foreground="MintCream" Margin="0 0 32 0"/>
         <Label Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Center" Content="To" FontSize="16" Foreground="MintCream" Margin="0 0 20 0"/>
 
-        <TextBox Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Height="30" VerticalContentAlignment="Center" Margin="120 0 120 0" IsReadOnly="True"/>
+        <TextBox Name="txtLengthTrip" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Height="30" VerticalContentAlignment="Center" Margin="120 0 120 0" IsReadOnly="True"/>
         
         <DatePicker Name="dprStartTime" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Height="30" Margin="120 10 120 0" IsEnabled="False"/>
         <DatePicker x:Name="dprEndTime"  Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" Height="30" Margin="120 10 120 0" IsEnabled="False"/>

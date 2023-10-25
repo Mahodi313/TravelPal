@@ -16,7 +16,7 @@ public static class UserManager
         new User("Dr", "Horse", "user", "Dr.Horse@edu.newton.se", DateTime.Parse("2002-10-24"), "password",Country.Sweden, new List<Travel> {
 
         new Vacation("Copenhagen", Country.Denmark, 1, new List<PackingListItem>{new TravelDocument("Passport", false), new OtherItem("Kinder", 1)}, DateTime.Parse("2023-10-24"), DateTime.Parse("2023-11-05"), true),
-        new WorkTrip("Chennai", Country.India, 2, new List<PackingListItem>{new TravelDocument("Passport", true), new TravelDocument("Visum", true), new OtherItem("Kinder", 1)}, DateTime.Parse("2023-12-23"), DateTime.Parse("2023-01-07"), "Meeting with Kim Jong Un")
+        new WorkTrip("Chennai", Country.India, 2, new List<PackingListItem>{new TravelDocument("Passport", true), new TravelDocument("Visum", true), new OtherItem("Kinder", 1)}, DateTime.Parse("2023-12-23"), DateTime.Parse("2024-01-07"), "Meeting with Kim Jong Un")
 
         })
     };
