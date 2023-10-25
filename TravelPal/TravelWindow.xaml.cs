@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using TravelPal.Managers;
 using TravelPal.Models;
 using TravelPal.User_Models;
@@ -28,7 +18,7 @@ namespace TravelPal
 
             lblGreetUser.Content = $"Welcome {user.Username}!";
 
-            foreach (Travel travels in user.Travels) 
+            foreach (Travel travels in user.Travels)
             {
                 ListViewItem travelItem = new ListViewItem();
                 travelItem.Content = travels.GetInfo();
@@ -50,9 +40,45 @@ namespace TravelPal
         {
 
         }
+
+        /* When tbkInfo_Click method is clicked,
+         * It will show a tutorial on
+         * how to use the application
+         * in the travelwindow section
+         * with a Messagebox
+         */
         private void tbkInfo_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("1. Check your travels in the list below\n" +
+                            "2. Press Add Travels to book a new travel\n" +
+                            "3. Press Details to show travel info or edit a travel\n" +
+                            "4. Press Remove to delete a choosen travel\n" +
+                            "5. To Check your profile, Press My Profile\n" +
+                            "6. Press Logout to return to the start-section",
+                            "Tutorial", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
 
+        private void btnRemoveTravels_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ListViewItem? selectedItem = lstTravels.SelectedItem as ListViewItem;
+
+                if (selectedItem == null)
+                {
+                    throw new NullReferenceException("You need to select a travel before proceeding!");
+                }
+                else
+                {
+                    Travel travelToRemove = (Travel)selectedItem.Tag;
+
+                    TravelManager.RemoveTravel(travelToRemove);
+                }
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

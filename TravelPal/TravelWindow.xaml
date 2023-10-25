@@ -49,8 +49,8 @@
 
         <Button Name="btnLogout" Grid.Column="4" Grid.Row="1" Background="Transparent" BorderBrush="#F5FFFA" BorderThickness="1" Margin="10" Content="Log out" FontSize="16" FontFamily="Arial" Foreground="#F5FFFA" Click="btnLogout_Click"/>
         <Button Name="btnAddTravels" Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="2" Margin="130 10 10 0" Background="Transparent" BorderBrush="#F5FFFA" BorderThickness="2" FontFamily="Arial" Content="Add Travels" FontSize="18" Foreground="#F5FFFA" />
-        <Button Name="btnDetails" Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="2" Margin="130 10 10 0" Background="Transparent" BorderBrush="#F5FFFA" BorderThickness="2" FontFamily="Arial" Content="Details" FontSize="18" Foreground="#F5FFFA" />
-        <Button Name="btnRemove" Grid.Column="4" Grid.Row="7" Grid.ColumnSpan="2" Margin="130 10 10 0" Background="Transparent" BorderBrush="#F5FFFA" BorderThickness="2" FontFamily="Arial" Content="Remove" FontSize="18" Foreground="#F5FFFA" />
+        <Button Name="btnDetailsTravels" Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="2" Margin="130 10 10 0" Background="Transparent" BorderBrush="#F5FFFA" BorderThickness="2" FontFamily="Arial" Content="Details" FontSize="18" Foreground="#F5FFFA" />
+        <Button Name="btnRemoveTravels" Grid.Column="4" Grid.Row="7" Grid.ColumnSpan="2" Margin="130 10 10 0" Background="Transparent" BorderBrush="#F5FFFA" BorderThickness="2" FontFamily="Arial" Content="Remove" FontSize="18" Foreground="#F5FFFA" Click="btnRemoveTravels_Click" />
 
         <TextBlock Name="tbkProfile" Grid.Column="5" Grid.Row="1" FontSize="16" FontFamily="Arial" Grid.ColumnSpan="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Hyperlink Click="tbkProfile_Click">
