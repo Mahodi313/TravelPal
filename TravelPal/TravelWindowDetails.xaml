@@ -72,8 +72,8 @@
         <ListView Name="lstTextDocuments" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="5 40 15 20"/>
 
 
-        <Button Grid.Column="3" Grid.Row="3" Content="Add new travel document" Background="Transparent" Foreground="MintCream" BorderBrush="MintCream" Margin="30 10 30 10"/>
-        <Button Grid.Column="4" Grid.Row="3" Content="Add new item" Background="Transparent" Foreground="MintCream" BorderBrush="MintCream" Margin="30 10 30 10"/>
+        <Button Name="btnAddTravelDoc" Grid.Column="3" Grid.Row="3" Content="Add new travel document" Background="Transparent" Foreground="MintCream" BorderBrush="MintCream" Margin="30 10 30 10"/>
+        <Button Name="btnAddNewItem" Grid.Column="4" Grid.Row="3" Content="Add new item" Background="Transparent" Foreground="MintCream" BorderBrush="MintCream" Margin="30 10 30 10"/>
         
         
 

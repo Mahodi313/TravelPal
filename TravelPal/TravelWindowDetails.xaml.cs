@@ -89,6 +89,4 @@ public partial class TravelWindowDetails : Window
             txtTripInfo.Text = workTrip.GetWorkTripInfo();
         }
     }
-
-
 }

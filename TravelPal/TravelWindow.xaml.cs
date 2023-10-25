@@ -54,6 +54,11 @@ namespace TravelPal
                             "Tutorial", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
+        private void btnAddTravels_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void btnRemoveTravels_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -78,8 +83,6 @@ namespace TravelPal
                 MessageBox.Show(ex.Message);
             }
         }
-
-
 
         private void btnDetailsTravels_Click(object sender, RoutedEventArgs e)
         {
@@ -120,6 +123,5 @@ namespace TravelPal
                 lstTravels.Items.Add(travelItem);
             }
         }
-
     }
 }
