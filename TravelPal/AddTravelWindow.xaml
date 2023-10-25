@@ -37,7 +37,7 @@
 
         <Label Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Add Travel" FontSize="30" Foreground="MediumSlateBlue"/>
 
-        <Button Name="btnGoBack" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Background="MediumSlateBlue" Content="Go back" FontSize="16" Foreground="MintCream" Margin="10"/>
+        <Button Name="btnGoBack" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Background="MediumSlateBlue" Content="Go back" FontSize="16" Foreground="MintCream" Margin="10" Click="btnGoBack_Click"/>
 
         <Border Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="8" Grid.RowSpan="9" Background="MediumSlateBlue" CornerRadius="10"/>
 
