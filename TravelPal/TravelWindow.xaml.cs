@@ -93,5 +93,11 @@ namespace TravelPal
                 lstTravels.Items.Add(travelItem);
             }
         }
+
+        private void btnDetailsTravels_Click(object sender, RoutedEventArgs e)
+        {
+            TravelWindowDetails travelWindowDetails = new TravelWindowDetails();
+            travelWindowDetails.Show();
+        }
     }
 }

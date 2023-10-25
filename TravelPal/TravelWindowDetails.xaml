@@ -35,19 +35,48 @@
 
         <Button Name="btnGoBack" Grid.Column="1" Grid.Row="1" Background="MediumSlateBlue" Margin="30 10 30 10" Content="Go back" Foreground="MintCream" FontSize="16"/>
         <Button Name="btnEdit" Grid.Column="4" Grid.Row="1" Background="MediumSlateBlue" Margin="30 10 30 10" Content="Edit" Foreground="MintCream" FontSize="16"/>
-        <Button Name="btnSave" Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2" Background="MediumSlateBlue" Margin="100 10 100 10" Content="Save" Foreground="MintCream" FontSize="16" Visibility="Hidden"/>
+        <Button Name="btnSave" Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2" Background="MediumSlateBlue" Margin="100 10 100 10" Content="Save" Foreground="MintCream" FontSize="16" IsEnabled="False"/>
 
         <Border Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="8" Background="MediumSlateBlue" BorderBrush="Black" BorderThickness="2" CornerRadius="20"/>
         <Label Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Country" FontSize="16" Foreground="MintCream"/>
         <Label Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Content="City" FontSize="16" Margin=" 25 0 0 0" Foreground="MintCream"/>
         <Label Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Amount of travellers" FontSize="16"  Foreground="MintCream"/>
 
-        <TextBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="70 0 50 0" Height="30" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="70 0 50 0" Height="30" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="70 0 50 0" Height="30" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Margin="170 0 50 0" Height="30" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtCountry" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="70 0 70 0" Height="30" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <TextBox x:Name="txtCity" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="70 0 70 0" Height="30" VerticalContentAlignment="Center" IsReadOnly="True"/>
+       
+        <TextBox x:Name="txtAmountTravellers" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Margin="170 0 70 0" Height="30" VerticalContentAlignment="Center" IsReadOnly="True"/>
 
-        <Border Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="3" Background="#A095F2" Margin="0 0 50 0"/>
+        <Border Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="3" Background="#A095F2" Margin="10 0 65 0" CornerRadius="10"/>
+        
+        <Label Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Length of trip" FontSize="16" Foreground="MintCream" Margin="10 0 0 0"/>
+        <Label Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Content="From" FontSize="16" Foreground="MintCream" Margin="0 0 32 0"/>
+        <Label Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Center" Content="To" FontSize="16" Foreground="MintCream" Margin="0 0 20 0"/>
+
+        <TextBox Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Height="30" VerticalContentAlignment="Center" Margin="120 0 120 0" IsReadOnly="True"/>
+        
+        <DatePicker Name="dprStartTime" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Height="30" Margin="120 10 120 0" IsEnabled="False"/>
+        <DatePicker x:Name="dprEndTime"  Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" Height="30" Margin="120 10 120 0" IsEnabled="False"/>
+
+        <Label Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2"  VerticalAlignment="Center" HorizontalAlignment="Left" Content="Trip Info" FontSize="16" Foreground="MintCream" Margin=" 30 0  0 10"/>
+
+        <TextBox Name="txtTripInfo" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="70" VerticalContentAlignment="Center" Margin="30 30 70 0" TextWrapping="Wrap" IsReadOnly="True"/>
+
+        <Border Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="7" Background="#A095F2" Margin="0 0 10 5" CornerRadius="10"/>
+
+        <Label Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Packing list" FontSize="16" Foreground="MintCream"/>
+        <Label Grid.Column="3" Grid.Row="4"  VerticalAlignment="Center" HorizontalAlignment="Left" Content="Items" FontSize="16" Foreground="MintCream"/>
+        <Label Grid.Column="3" Grid.Row="7"  VerticalAlignment="Center" HorizontalAlignment="Left" Content="Travel Documents" FontSize="16" Foreground="MintCream"/>
+
+        <ListView Name="lstItems" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="5 40 15 20"/>
+        <ListView Name="lstTextDocuments" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="5 40 15 20"/>
+
+
+        <Button Grid.Column="3" Grid.Row="3" Content="Add new travel document" Background="Transparent" Foreground="MintCream" BorderBrush="MintCream" Margin="30 10 30 10"/>
+        <Button Grid.Column="4" Grid.Row="3" Content="Add new item" Background="Transparent" Foreground="MintCream" BorderBrush="MintCream" Margin="30 10 30 10"/>
+        
+        
+
 
 
 
