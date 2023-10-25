@@ -56,7 +56,9 @@ namespace TravelPal
 
         private void btnAddTravels_Click(object sender, RoutedEventArgs e)
         {
-
+            AddTravelWindow addTravelWindow = new(User);
+            addTravelWindow.Show();
+            Close();
         }
 
         private void btnRemoveTravels_Click(object sender, RoutedEventArgs e)
