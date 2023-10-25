@@ -14,11 +14,11 @@ namespace TravelPal
     {
         private User User { get; set; }
 
-        public TravelWindow(User user)
+        public TravelWindow(IUser user)
         {
             InitializeComponent();
 
-            User = user;
+            User = (User)user;
 
             UpdateUI();
         }
@@ -29,6 +29,7 @@ namespace TravelPal
 
             MainWindow mainWindow = new();
             mainWindow.Show();
+
             Close();
         }
         private void tbkProfile_Click(object sender, RoutedEventArgs e)
@@ -108,8 +109,9 @@ namespace TravelPal
                 {
                     Travel selectedTravel = (Travel)selectedItem.Tag;
 
-                    TravelWindowDetails travelWindowDetails = new(selectedTravel);
+                    TravelWindowDetails travelWindowDetails = new(selectedTravel, User);
                     travelWindowDetails.Show();
+                    Close();
                 }
             }
             catch (NullReferenceException ex) 

@@ -33,7 +33,7 @@
 
         <Label Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Travel Details" FontSize="30" FontFamily="Arial" Foreground="MediumSlateBlue"/>
 
-        <Button Name="btnGoBack" Grid.Column="1" Grid.Row="1" Background="MediumSlateBlue" Margin="30 10 30 10" Content="Go back" Foreground="MintCream" FontSize="16"/>
+        <Button Name="btnGoBack" Grid.Column="1" Grid.Row="1" Background="MediumSlateBlue" Margin="30 10 30 10" Content="Go back" Foreground="MintCream" FontSize="16" Click="btnGoBack_Click"/>
         <Button Name="btnEdit" Grid.Column="4" Grid.Row="1" Background="MediumSlateBlue" Margin="30 10 30 10" Content="Edit" Foreground="MintCream" FontSize="16"/>
         <Button Name="btnSave" Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2" Background="MediumSlateBlue" Margin="100 10 100 10" Content="Save" Foreground="MintCream" FontSize="16" IsEnabled="False"/>
 
@@ -60,7 +60,7 @@
 
         <Label Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2"  VerticalAlignment="Center" HorizontalAlignment="Left" Content="Trip Info" FontSize="16" Foreground="MintCream" Margin=" 30 0  0 10"/>
 
-        <TextBox Name="txtTripInfo" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="70" VerticalContentAlignment="Center" Margin="30 30 70 0" TextWrapping="Wrap" IsReadOnly="True"/>
+        <TextBox Name="txtTripInfo" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="70"  Margin="30 30 70 0" TextWrapping="Wrap" IsReadOnly="True"/>
 
         <Border Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="7" Background="#A095F2" Margin="0 0 10 5" CornerRadius="10"/>
 
