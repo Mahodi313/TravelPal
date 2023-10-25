@@ -46,6 +46,7 @@ public partial class TravelWindowDetails : Window
         Close();
     }
 
+    //EDIT, SAVE, ADD NEW ITEM, ADD NEW TRAVEL DOC, NOT ADDED!
 
     public void UpdateUI() 
     {

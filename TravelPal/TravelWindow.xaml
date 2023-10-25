@@ -48,7 +48,7 @@
 
 
         <Button Name="btnLogout" Grid.Column="4" Grid.Row="1" Background="Transparent" BorderBrush="#F5FFFA" BorderThickness="1" Margin="10" Content="Log out" FontSize="16" FontFamily="Arial" Foreground="#F5FFFA" Click="btnLogout_Click"/>
-        <Button Name="btnAddTravels" Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="2" Margin="130 10 10 0" Background="Transparent" BorderBrush="#F5FFFA" BorderThickness="2" FontFamily="Arial" Content="Add Travels" FontSize="18" Foreground="#F5FFFA" />
+        <Button Name="btnAddTravels" Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="2" Margin="130 10 10 0" Background="Transparent" BorderBrush="#F5FFFA" BorderThickness="2" FontFamily="Arial" Content="Add Travels" FontSize="18" Foreground="#F5FFFA" Click="btnAddTravels_Click" />
         <Button Name="btnDetailsTravels" Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="2" Margin="130 10 10 0" Background="Transparent" BorderBrush="#F5FFFA" BorderThickness="2" FontFamily="Arial" Content="Details" FontSize="18" Foreground="#F5FFFA" Click="btnDetailsTravels_Click" />
         <Button Name="btnRemoveTravels" Grid.Column="4" Grid.Row="7" Grid.ColumnSpan="2" Margin="130 10 10 0" Background="Transparent" BorderBrush="#F5FFFA" BorderThickness="2" FontFamily="Arial" Content="Remove" FontSize="18" Foreground="#F5FFFA" Click="btnRemoveTravels_Click" />
 
