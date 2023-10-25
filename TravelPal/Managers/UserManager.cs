@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using TravelPal.Enums;
 using TravelPal.Models;
 using TravelPal.User_Models;
@@ -27,46 +23,43 @@ public static class UserManager
 
     public static IUser? SignedInUser { get; set; }
 
-    public static bool AddUser(IUser user) 
-    {   
+    public static bool AddUser(IUser user)
+    {
         //if email and username don't exist, return true, else return false
         string username = user.Username;
         string email = user.Email;
 
-        bool isUsernameAvailable = ValidateUserName(username);
-        bool isEmailAvailable = ValidateEmail(email);
-
-        if (isUsernameAvailable && isEmailAvailable && user.Age >= 16) 
+        if (ValidateUserName(username) && ValidateEmail(email) && user.Age >= 16)
         {
             return true;
         }
-        else 
+        else
         {
             return false;
         }
 
     }
 
-    public static void RemoveUser(IUser user) 
+    public static void RemoveUser(IUser user)
     {
         //TODO: IMPLEMENT LOGIC FOR REMOVING USER
     }
-    
-    public static bool UpdateUsername(IUser user, string choosenName) 
-    {   
+
+    public static bool UpdateUsername(IUser user, string choosenName)
+    {
         //TODO: IMPLEMENT LOGIC FOR UPDATING AND CHECKING USERNAME
         return false;
     }
 
-    private static bool ValidateUserName(string userName) 
-    {   
-        foreach(var user in users) 
+    private static bool ValidateUserName(string userName)
+    {
+        foreach (var user in users)
         {
             // If the username already exists in the list of users return false because it's not available. Return true if available
-            if (userName == user.Username) 
+            if (userName == user.Username)
             {
                 return false;
-            } 
+            }
         }
         return true;
     }
@@ -79,7 +72,7 @@ public static class UserManager
     private static bool ValidateEmail(string email)
     {
         foreach (var user in users)
-        {   
+        {
             // If the email already exists in the list of users return false because it's not available. Return true if available
             if (email == user.Email)
             {
@@ -89,29 +82,29 @@ public static class UserManager
         return true;
     }
 
-    public static bool SignInUser(string username, string password) 
-    {   
+    public static bool SignInUser(string username, string password)
+    {
         //TODO: IMPLEMENT LOGIC FOR CHECKING IF USER CAN SIGN IN
 
-        foreach (var user in users) 
+        foreach (var user in users)
         {
-            if (username == user.Username && password == user.Password) 
+            if (username == user.Username && password == user.Password)
             {
-                if (user is User costumer) 
+                if (user is User costumer)
                 {
                     TravelWindow travelWindow = new(costumer);
                     travelWindow.Show();
 
                     SignedInUser = costumer;
                 }
-                else if (user is Admin admin) 
+                else if (user is Admin admin)
                 {
                     //ADD ADMIN WINDOW
                     //TravelWindow travelWindow = new(admin);
                     //travelWindow.Show();
                     SignedInUser = admin;
                 }
-                    return true;
+                return true;
             }
         }
         return false;
