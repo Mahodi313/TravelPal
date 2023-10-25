@@ -12,20 +12,15 @@ namespace TravelPal
     /// </summary>
     public partial class TravelWindow : Window
     {
+        private User User { get; set; }
+
         public TravelWindow(User user)
         {
             InitializeComponent();
 
-            lblGreetUser.Content = $"Welcome {user.Username}!";
+            User = user;
 
-            foreach (Travel travels in user.Travels)
-            {
-                ListViewItem travelItem = new ListViewItem();
-                travelItem.Content = travels.GetInfo();
-                travelItem.Tag = travels;
-
-                lstTravels.Items.Add(travelItem);
-            }
+            UpdateUI();
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
@@ -72,12 +67,30 @@ namespace TravelPal
                 {
                     Travel travelToRemove = (Travel)selectedItem.Tag;
 
-                    TravelManager.RemoveTravel(travelToRemove);
+                    TravelManager.RemoveTravel(travelToRemove, User);
+
+                    UpdateUI();
                 }
             }
             catch (NullReferenceException ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void UpdateUI()
+        {
+            lblGreetUser.Content = $"Welcome {User.Username}!";
+
+            lstTravels.Items.Clear();
+
+            foreach (Travel travels in User.Travels)
+            {
+                ListViewItem travelItem = new ListViewItem();
+                travelItem.Content = travels.GetInfo();
+                travelItem.Tag = travels;
+
+                lstTravels.Items.Add(travelItem);
             }
         }
     }

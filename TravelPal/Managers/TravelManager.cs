@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TravelPal.Models;
+using TravelPal.User_Models;
 
 namespace TravelPal.Managers
 {
@@ -11,14 +8,15 @@ namespace TravelPal.Managers
     {
         public static List<Travel> travels = new();
 
-        public static void AddTravel(Travel travelToAdd) 
+        public static void AddTravel(Travel travelToAdd)
         {
             //TODO: IMPLEMENT LOGIC FOR ADDING TRAVEL
         }
 
-        public static void RemoveTravel(Travel travelToRemove) 
+        public static void RemoveTravel(Travel travelToRemove, User user)
         {
-            //TODO: IMPLEMENT LOGIC FOR REMOVING TRAVEL
+            travels = user.Travels;
+            travels.Remove(travelToRemove);
         }
     }
 }
