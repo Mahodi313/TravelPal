@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
@@ -14,50 +15,67 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TravelPal.Models;
 
-namespace TravelPal
+namespace TravelPal;
+
+/// <summary>
+/// Interaction logic for TravelWindowDetails.xaml
+/// </summary>
+public partial class TravelWindowDetails : Window
 {
-    /// <summary>
-    /// Interaction logic for TravelWindowDetails.xaml
-    /// </summary>
-    public partial class TravelWindowDetails : Window
+    public Travel Travel { get; set; }
+
+    public TravelWindowDetails(Travel travel)
     {
-        public Travel Travel { get; set; }
+        InitializeComponent();
 
-        public TravelWindowDetails(Travel travel)
+        Travel = travel;
+
+        UpdateUI();
+
+
+
+    }
+
+    public void UpdateUI() 
+    {
+        //Initializes traveldetails UI
+
+        txtCountry.Text = Travel.Country.ToString();
+        txtCity.Text = Travel.Destination;
+        txtAmountTravellers.Text = Travel.Travellers.ToString();
+
+        txtLengthTrip.Text = Travel.TravelDays.ToString();
+
+        dprStartTime.Text = Travel.StartDate.ToString();
+        dprEndTime.Text = Travel.EndDate.ToString();
+
+        foreach (var item in Travel.PackingList)
         {
-            InitializeComponent();
-
-            Travel = travel;
-
-            txtCountry.Text = travel.Country.ToString();
-            txtCity.Text = travel.Destination;
-            txtAmountTravellers.Text = travel.Travellers.ToString();
-
-            txtLengthTrip.Text = travel.TravelDays.ToString();
-
-            dprStartTime.Text = travel.StartDate.ToString();
-            dprEndTime.Text = travel.EndDate.ToString();
-
-            foreach(var item in travel.PackingList) 
+            if (item is OtherItem otherItem)
             {
-                if (item is OtherItem otherItem) 
-                {
-                    ListViewItem otherItemView = new ListViewItem();
-                    otherItemView.Content = otherItem.GetInfo();
-                    otherItemView.Tag = otherItem;
+                ListViewItem otherItemView = new ListViewItem();
+                otherItemView.Content = otherItem.GetInfo();
+                otherItemView.Tag = otherItem;
 
-                    lstItems.Items.Add(otherItemView);
-                }
-                else if (item is TravelDocument document) 
-                {
-                    ListViewItem documentItem = new ListViewItem();
-                    documentItem.Content = document.GetInfo();
-                    documentItem.Tag = document;
-
-                    lstTextDocuments.Items.Add(documentItem);
-                }
+                lstItems.Items.Add(otherItemView);
             }
+            else if (item is TravelDocument document)
+            {
+                ListViewItem documentItem = new ListViewItem();
+                documentItem.Content = document.GetInfo();
+                documentItem.Tag = document;
 
+                lstTextDocuments.Items.Add(documentItem);
+            }
+        }
+
+        if (Travel is Vacation vacation)
+        {
+            txtTripInfo.Text = vacation.GetVacationInfo();
+        }
+        else if (Travel is WorkTrip workTrip)
+        {
+            txtTripInfo.Text = workTrip.GetWorkTripInfo();
         }
     }
 }

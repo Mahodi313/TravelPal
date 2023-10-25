@@ -21,5 +21,10 @@ namespace TravelPal.Models
         {
             return $"WorkTrip - {Country} - Date: {StartDate.Day}/{StartDate.Month}/{StartDate.Year}";
         }
+        
+        public string GetWorkTripInfo() 
+        {
+            return $"Worktrip\nMeeting Details: {MeetingDetails}";
+        }
     }
 }

@@ -22,5 +22,14 @@ namespace TravelPal.Models
             return $"Vacation - {Country} - Date: {StartDate.Day}/{StartDate.Month}/{StartDate.Year}";
             
         }
+        public string GetVacationInfo()
+        {   
+            if (AllInclusive) 
+            {
+                return $"Vacation - All Inclusive";
+            }
+
+            return $"Vacation - NOT - All Inclusive";
+        }
     }
 }
