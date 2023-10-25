@@ -20,9 +20,18 @@ namespace TravelPal
     /// </summary>
     public partial class AddTravelWindow : Window
     {
+        private User _user;
         public AddTravelWindow(IUser user)
         {
             InitializeComponent();
+            _user = (User)user;
+        }
+
+        private void btnGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            TravelWindow travelWindow = new(_user);
+            travelWindow.Show();
+            Close();
         }
     }
 }
