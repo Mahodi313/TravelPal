@@ -79,21 +79,7 @@ namespace TravelPal
             }
         }
 
-        private void UpdateUI()
-        {
-            lblGreetUser.Content = $"Welcome {User.Username}!";
 
-            lstTravels.Items.Clear();
-
-            foreach (Travel travels in User.Travels)
-            {
-                ListViewItem travelItem = new ListViewItem();
-                travelItem.Content = travels.GetInfo();
-                travelItem.Tag = travels;
-
-                lstTravels.Items.Add(travelItem);
-            }
-        }
 
         private void btnDetailsTravels_Click(object sender, RoutedEventArgs e)
         {
@@ -118,6 +104,21 @@ namespace TravelPal
             {
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }            
+        }
+        private void UpdateUI()
+        {
+            lblGreetUser.Content = $"Welcome {User.Username}!";
+
+            lstTravels.Items.Clear();
+
+            foreach (Travel travels in User.Travels)
+            {
+                ListViewItem travelItem = new ListViewItem();
+                travelItem.Content = travels.GetInfo();
+                travelItem.Tag = travels;
+
+                lstTravels.Items.Add(travelItem);
+            }
         }
 
     }
