@@ -108,6 +108,33 @@ namespace TravelPal
                     }
                     
                 }
+                else if (typeOfTrip == "Worktrip") 
+                {
+                    string meetingDetails = txtMeetingDetails.Text;
+
+                    if (string.IsNullOrWhiteSpace(meetingDetails.Trim())) 
+                    {
+                        throw new ArgumentException("Please enter meeting details before proceeding!");
+                    }
+                    else 
+                    {
+                        if (UserCountryCheck && !selectedCountryCheck)
+                        {
+                            Travel = new WorkTrip(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", true) }, startDate, endDate, meetingDetails);
+                        }
+                        else if (UserCountryCheck && selectedCountryCheck)
+                        {
+                            Travel = new WorkTrip(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", false) }, startDate, endDate, meetingDetails);
+                        }
+                        else
+                        {
+                            Travel = new WorkTrip(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", true) }, startDate, endDate, meetingDetails);
+                        }
+                    }
+                }
+
+                TravelManager.AddTravel(Travel, _user);
+                MessageBox.Show("Travel has been successfully booked!", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
                 
                 
             }
@@ -140,6 +167,7 @@ namespace TravelPal
         private void UpdateUI() 
         {
             cbCountries.SelectedIndex = -1;
+            
 
             foreach (Country country in Enum.GetValues(typeof(Country))) 
             {
