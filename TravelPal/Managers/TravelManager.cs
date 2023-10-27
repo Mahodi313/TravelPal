@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using TravelPal.Enums;
 using TravelPal.Models;
 using TravelPal.User_Models;
 
@@ -17,6 +19,23 @@ namespace TravelPal.Managers
         {
             travels = user.Travels;
             travels.Remove(travelToRemove);
+        }
+
+
+        /* Checks if user location and 
+         * choosen country exists in 
+         * Europe when adding travel */
+        public static bool CheckCountryEurope(Country country) 
+        {
+            foreach (EuropeanCountry euCountry in Enum.GetValues(typeof(EuropeanCountry))) 
+            {
+                if (country.ToString() == euCountry.ToString()) 
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
