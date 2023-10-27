@@ -34,6 +34,9 @@ namespace TravelPal
             _user = (User)user;
 
             UpdateUI();
+
+            dtrStartTime.DisplayDateStart = DateTime.Now;
+            dtrEndTime.DisplayDateStart = DateTime.Now;
         }
 
         private void btnGoBack_Click(object sender, RoutedEventArgs e)

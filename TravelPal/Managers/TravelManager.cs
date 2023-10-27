@@ -15,6 +15,7 @@ namespace TravelPal.Managers
             //TODO: IMPLEMENT LOGIC FOR ADDING TRAVEL
             travels = user.Travels;
             travels.Add(travelToAdd);
+
         }
 
         public static void RemoveTravel(Travel travelToRemove, User user)
