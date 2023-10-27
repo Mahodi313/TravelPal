@@ -129,15 +129,18 @@ namespace TravelPal
                     {
                         if (UserCountryCheck && !selectedCountryCheck)
                         {
-                            Travel = new WorkTrip(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", true) }, startDate, endDate, meetingDetails);
+                            Travel = new WorkTrip(city, selectedCountry, int.Parse(amountOfTravellers), PackingItems, startDate, endDate, meetingDetails);
+                            Travel.PackingList.Add(new TravelDocument("Passport", true));
                         }
                         else if (UserCountryCheck && selectedCountryCheck)
                         {
-                            Travel = new WorkTrip(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", false) }, startDate, endDate, meetingDetails);
+                            Travel = new WorkTrip(city, selectedCountry, int.Parse(amountOfTravellers), PackingItems, startDate, endDate, meetingDetails);
+                            Travel.PackingList.Add(new TravelDocument("Passport", true));
                         }
                         else
                         {
-                            Travel = new WorkTrip(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", true) }, startDate, endDate, meetingDetails);
+                            Travel = new WorkTrip(city, selectedCountry, int.Parse(amountOfTravellers), PackingItems, startDate, endDate, meetingDetails);
+                            Travel.PackingList.Add(new TravelDocument("Passport", true));
                         }
                     }
                 }
@@ -223,6 +226,10 @@ namespace TravelPal
             catch (FormatException fx) 
             {
                 MessageBox.Show(fx.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch(Exception) 
+            {
+                MessageBox.Show("Error!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
