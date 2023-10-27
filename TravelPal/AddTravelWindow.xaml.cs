@@ -77,10 +77,6 @@ namespace TravelPal
                 {
                     throw new ArgumentException("Invalid dates! End-date can't be earlier than start-date.");
                 }
-                if (startDate < DateTime.Now || endDate < DateTime.Now) 
-                {
-                    throw new ArgumentException("Invalid dates! You cannot select a day that has already passed.");
-                }
 
                 selectedCountry = (Country)cbCountries.SelectedItem;
 
