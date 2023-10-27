@@ -70,6 +70,15 @@ namespace TravelPal
                 DateTime startDate = DateTime.Parse(startTime);
                 DateTime endDate = DateTime.Parse(endTime);
 
+                if (endDate < startDate)
+                {
+                    throw new ArgumentException("Invalid dates! End-date can't be earlier than start-date.");
+                }
+                if (startDate < DateTime.Now || endDate < DateTime.Now) 
+                {
+                    throw new ArgumentException("Invalid dates! You cannot select a day that has already passed.");
+                }
+
                 selectedCountry = (Country)cbCountries.SelectedItem;
 
 
@@ -91,7 +100,7 @@ namespace TravelPal
                             Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), PackingItems, startDate, endDate, true);
                             Travel.PackingList.Add(new TravelDocument("Passport", false));
                         }
-                        else // If user lives outside EU, get user a passport a required passport, no matter where he travels
+                        else // If user lives outside EU, get user a passport, a required passport, no matter where he travels
                         {
                             Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), PackingItems, startDate, endDate, true);
                             Travel.PackingList.Add(new TravelDocument("Passport", true));

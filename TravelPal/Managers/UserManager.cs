@@ -11,12 +11,12 @@ public static class UserManager
 
     public static List<IUser> users = new()
     {
-        new Admin("Mahdi", "Ali", "admin", "Mahdi.Ali@edu.newton.se", "password", Enums.Country.Sweden, DateTime.Parse("2002-10-24")),
+        new Admin("Mahdi", "Ali", "admin", "Mahdi.Ali@edu.newton.se", "password", Country.Sweden, DateTime.Parse("2002-10-24")),
 
         new User("Dr", "Horse", "user", "Dr.Horse@edu.newton.se", DateTime.Parse("2002-10-24"), "password",Country.Sweden, new List<Travel> {
 
         new Vacation("Copenhagen", Country.Denmark, 1, new List<PackingListItem>{new TravelDocument("Passport", false), new OtherItem("Kinder", 1)}, DateTime.Parse("2023-10-24"), DateTime.Parse("2023-11-05"), true),
-        new WorkTrip("Chennai", Country.India, 2, new List<PackingListItem>{new TravelDocument("Passport", true), new TravelDocument("Visum", true), new OtherItem("Kinder", 1)}, DateTime.Parse("2023-12-23"), DateTime.Parse("2024-01-07"), "Meeting with Kim Jong Un")
+        new WorkTrip("Chennai", Country.India, 2, new List<PackingListItem>{new TravelDocument("Passport", true), new TravelDocument("Visum", true), new OtherItem("Milky Way", 1)}, DateTime.Parse("2023-12-23"), DateTime.Parse("2024-01-07"), "Meeting with Kim Jong Un")
 
         })
     };
@@ -45,11 +45,12 @@ public static class UserManager
         //TODO: IMPLEMENT LOGIC FOR REMOVING USER
     }
 
-    public static bool UpdateUsername(IUser user, string choosenName)
-    {
-        //TODO: IMPLEMENT LOGIC FOR UPDATING AND CHECKING USERNAME
-        return false;
-    }
+    //public static bool UpdateUsername(IUser user, string choosenName)
+    //{
+    //    //TODO: IMPLEMENT LOGIC FOR UPDATING AND CHECKING USERNAME
+    //    //NICE-TO-HAVE
+    //    return false;
+    //}
 
     private static bool ValidateUserName(string userName)
     {
@@ -63,11 +64,13 @@ public static class UserManager
         }
         return true;
     }
-    public static bool UpdateEmail(IUser user, string choosenEmail)
-    {
-        //TODO: IMPLEMENT LOGIC FOR UPDATING AND CHECKING EMAIL
-        return false;
-    }
+
+    //public static bool UpdateEmail(IUser user, string choosenEmail)
+    //{
+    //    //TODO: IMPLEMENT LOGIC FOR UPDATING AND CHECKING EMAIL
+    //    //NICE-TO-HAVE
+    //    return false;
+    //}
 
     private static bool ValidateEmail(string email)
     {
