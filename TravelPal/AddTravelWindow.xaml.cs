@@ -210,7 +210,7 @@ namespace TravelPal
                         PackingItems.Add(new OtherItem(item, value));
                     }
 
-                    MessageBox.Show("Item successfully added!");
+                    MessageBox.Show("Item successfully added!", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     txtItem.Clear();
                     txtQuantity.Clear();
