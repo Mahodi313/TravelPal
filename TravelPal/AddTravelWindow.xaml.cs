@@ -67,6 +67,48 @@ namespace TravelPal
                 DateTime startDate = DateTime.Parse(startTime);
                 DateTime endDate = DateTime.Parse(endTime);
                 selectedCountry = (Country)cbCountries.SelectedItem;
+                
+
+                bool UserCountryCheck = Country.IsDefined(typeof(EuropeanCountry), _user.Location); // Checks if user lives in a europan country,
+                                                                                                 // returns true if user lives in europa.
+
+                bool selectedCountryCheck = Country.IsDefined(typeof(EuropeanCountry), selectedCountry); // Checks if user selected country to travel is european or not.
+
+                if (typeOfTrip == "Vacation") 
+                {
+                    if (cbxAllInclusive.IsChecked == true) // Set All inclusive to true for the travels
+                    {
+                        if (UserCountryCheck && !selectedCountryCheck) // If user lives in a european country and traveling to outside euro. Get user a required passport 
+                        {
+                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", true) }, startDate, endDate, true);
+                        }
+                        else if (UserCountryCheck && selectedCountryCheck) // If user lives in euro and traveling inside euro. Get user a passport that is not required.
+                        {
+                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", false) }, startDate, endDate, true);
+                        }
+                        else // If user lives outside EU, get user a passport a required passport, no matter where he travels
+                        {
+                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", true) }, startDate, endDate, true);
+                        }
+                    }
+                    else // Set all inclusive to false if its not checked. (Repeating code) Maybe implement method later?
+                    {
+                        if (UserCountryCheck && !selectedCountryCheck) 
+                        {
+                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", true) }, startDate, endDate, false);
+                        }
+                        else if (UserCountryCheck && selectedCountryCheck)
+                        {
+                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", false) }, startDate, endDate, false);
+                        }
+                        else
+                        {
+                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", true) }, startDate, endDate, false);
+                        }
+                    }
+                }
+                
+                
             }
 
             catch (ArgumentException aex) 
@@ -77,9 +119,9 @@ namespace TravelPal
             {
                 MessageBox.Show("Invalid format for the travel dates!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch (NullReferenceException)
+            catch (NullReferenceException nex)
             {
-                MessageBox.Show("No country or travel type selected!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(nex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (Exception) 
             {
