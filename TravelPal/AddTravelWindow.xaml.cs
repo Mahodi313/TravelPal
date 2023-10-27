@@ -26,6 +26,7 @@ namespace TravelPal
         private User _user;
 
         public Travel Travel { get; set; }
+        
         public AddTravelWindow(IUser user)
         {
             InitializeComponent();
@@ -153,14 +154,12 @@ namespace TravelPal
             catch (Exception) 
             {
                 MessageBox.Show("Travel Add Error!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-            
+            }           
         }
 
         private void btnAddItem_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void UpdateUI() 
