@@ -26,6 +26,7 @@ namespace TravelPal
         private User _user;
 
         public Travel Travel { get; set; }
+        public List<PackingListItem> PackingItems { get; set; } = new();
         
         public AddTravelWindow(IUser user)
         {
@@ -65,9 +66,10 @@ namespace TravelPal
                 {
                     throw new NullReferenceException("Please select the type of trip before proceeding!");
                 }
-
+           
                 DateTime startDate = DateTime.Parse(startTime);
                 DateTime endDate = DateTime.Parse(endTime);
+
                 selectedCountry = (Country)cbCountries.SelectedItem;
 
 
@@ -81,30 +83,36 @@ namespace TravelPal
                     {
                         if (UserCountryCheck && !selectedCountryCheck) // If user lives in a european country and traveling to outside euro. Get user a required passport 
                         {
-                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", true) }, startDate, endDate, true);
+                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), PackingItems, startDate, endDate, true);
+                            Travel.PackingList.Add(new TravelDocument("Passport", true));
                         }
                         else if (UserCountryCheck && selectedCountryCheck) // If user lives in euro and traveling inside euro. Get user a passport that is not required.
                         {
-                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", false) }, startDate, endDate, true);
+                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), PackingItems, startDate, endDate, true);
+                            Travel.PackingList.Add(new TravelDocument("Passport", false));
                         }
                         else // If user lives outside EU, get user a passport a required passport, no matter where he travels
                         {
-                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", true) }, startDate, endDate, true);
+                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), PackingItems, startDate, endDate, true);
+                            Travel.PackingList.Add(new TravelDocument("Passport", true));
                         }
                     }
                     else // Set all inclusive to false if its not checked. (Repeating code) Maybe implement method later?
                     {
                         if (UserCountryCheck && !selectedCountryCheck) 
                         {
-                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", true) }, startDate, endDate, false);
+                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), PackingItems, startDate, endDate, false);
+                            Travel.PackingList.Add(new TravelDocument("Passport", true));
                         }
                         else if (UserCountryCheck && selectedCountryCheck)
                         {
-                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", false) }, startDate, endDate, false);
+                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), PackingItems, startDate, endDate, false);
+                            Travel.PackingList.Add(new TravelDocument("Passport", false));
                         }
                         else
                         {
-                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", true) }, startDate, endDate, false);
+                            Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), PackingItems, startDate, endDate, false);
+                            Travel.PackingList.Add(new TravelDocument("Passport", true));
                         }
                     }
                     
@@ -158,8 +166,64 @@ namespace TravelPal
         }
 
         private void btnAddItem_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {   
+
+            try
+            {
+                string item = txtItem.Text;
+
+                if (string.IsNullOrWhiteSpace(item.Trim())) 
+                {
+                    throw new ArgumentException("You need to enter your desired item before proceeding!");
+                }
+                else 
+                {
+                    if (cbxTravelDocument.IsChecked == true)
+                    {
+                        
+                        if (cbxRequired.IsChecked == true) 
+                        {
+                            PackingItems.Add(new TravelDocument(item, true));
+                        }
+                        else 
+                        {
+                            PackingItems.Add(new TravelDocument(item, false));
+                        }
+                    }
+                    else 
+                    {
+                        string quantity = txtQuantity.Text;
+                        cbxRequired.Visibility=Visibility.Hidden;
+
+                        if (string.IsNullOrWhiteSpace(quantity.Trim())) 
+                        {
+                            throw new ArgumentException("Please fill in your desired amount!");
+                        }
+                        if (!int.TryParse(quantity, out int value)) 
+                        {
+                            throw new FormatException("Quantity was written in an invalid format!");
+                        }
+
+                        PackingItems.Add(new OtherItem(item, value));
+                    }
+
+                    MessageBox.Show("Item successfully added!");
+
+                    txtItem.Clear();
+                    txtQuantity.Clear();
+                    cbxTravelDocument.IsChecked = false;
+                    cbxRequired.IsChecked = false;
+                    cbxRequired.Visibility=Visibility.Hidden;
+                }
+            }
+            catch (ArgumentException ax) 
+            {
+                MessageBox.Show(ax.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch (FormatException fx) 
+            {
+                MessageBox.Show(fx.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void UpdateUI() 
@@ -219,5 +283,17 @@ namespace TravelPal
                 txtMeetingDetails.IsEnabled = false;
             }
         }
+
+        private void cbxTravelDocument_Checked(object sender, RoutedEventArgs e)
+        {
+            cbxRequired.Visibility= Visibility.Visible;
+            txtQuantity.IsEnabled = false;
+        }
+        private void cbxTravelDocument_UnChecked(object sender, RoutedEventArgs e)
+        {
+            cbxRequired.Visibility = Visibility.Hidden;
+            txtQuantity.IsEnabled = true;
+        }
+
     }
 }
