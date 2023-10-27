@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TravelPal.Enums;
+using TravelPal.Managers;
 using TravelPal.Models;
 using TravelPal.User_Models;
 
@@ -67,12 +68,11 @@ namespace TravelPal
                 DateTime startDate = DateTime.Parse(startTime);
                 DateTime endDate = DateTime.Parse(endTime);
                 selectedCountry = (Country)cbCountries.SelectedItem;
-                
 
-                bool UserCountryCheck = Country.IsDefined(typeof(EuropeanCountry), _user.Location); // Checks if user lives in a europan country,
+
+                bool UserCountryCheck = TravelManager.CheckCountryEurope(_user.Location); // Checks if user lives in a europan country,
                                                                                                  // returns true if user lives in europa.
-
-                bool selectedCountryCheck = Country.IsDefined(typeof(EuropeanCountry), selectedCountry); // Checks if user selected country to travel is european or not.
+                bool selectedCountryCheck = TravelManager.CheckCountryEurope(selectedCountry); // Checks if user selected country to travel is european or not.
 
                 if (typeOfTrip == "Vacation") 
                 {
@@ -106,6 +106,7 @@ namespace TravelPal
                             Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), new List<PackingListItem> { new TravelDocument("Passport", true) }, startDate, endDate, false);
                         }
                     }
+                    
                 }
                 
                 

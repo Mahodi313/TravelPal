@@ -10,9 +10,11 @@ namespace TravelPal.Managers
     {
         public static List<Travel> travels = new();
 
-        public static void AddTravel(Travel travelToAdd)
+        public static void AddTravel(Travel travelToAdd, User user)
         {
             //TODO: IMPLEMENT LOGIC FOR ADDING TRAVEL
+            travels = user.Travels;
+            travels.Add(travelToAdd);
         }
 
         public static void RemoveTravel(Travel travelToRemove, User user)
