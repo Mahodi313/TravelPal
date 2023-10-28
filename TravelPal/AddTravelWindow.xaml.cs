@@ -143,7 +143,7 @@ namespace TravelPal
                         else if (UserCountryCheck && selectedCountryCheck)
                         {
                             Travel = new WorkTrip(city, selectedCountry, int.Parse(amountOfTravellers), PackingItems, startDate, endDate, meetingDetails);
-                            Travel.PackingList.Add(new TravelDocument("Passport", true));
+                            Travel.PackingList.Add(new TravelDocument("Passport", false));
                         }
                         else
                         {
