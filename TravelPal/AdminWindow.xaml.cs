@@ -28,23 +28,25 @@ namespace TravelPal
 
             foreach (var user in UserManager.users) 
             {
-                if (user.GetType() == typeof(Admin)) 
-                {
-                    cbUsers.Items.Remove(user);
-                }
 
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = user.Username;
                 item.Tag = user;
                 cbUsers.Items.Add(item);
             }
-            
+            cbUsers.Items.RemoveAt(0); // Removes Admin because nobody likes him :( (Don't need him for this) 
+
 
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
+            UserManager.SignedInUser = null;
 
+            MainWindow main = new();
+            main.Show();
+
+            Close();
         }
 
         private void btnManageUsers_Click(object sender, RoutedEventArgs e)

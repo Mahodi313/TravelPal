@@ -102,9 +102,10 @@ public static class UserManager
                 }
                 else if (user is Admin admin)
                 {
-                    //ADD ADMIN WINDOW
-                    //TravelWindow travelWindow = new(admin);
-                    //travelWindow.Show();
+
+                    AdminWindow adminWindow = new();
+                    adminWindow.Show();
+
                     SignedInUser = admin;
                 }
                 return true;
