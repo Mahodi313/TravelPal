@@ -22,6 +22,8 @@ namespace TravelPal
     /// </summary>
     public partial class AdminWindow : Window
     {
+        private User _user;
+
         public AdminWindow()
         {
             InitializeComponent();
@@ -29,14 +31,14 @@ namespace TravelPal
             foreach (var user in UserManager.users) 
             {
 
-                ComboBoxItem item = new ComboBoxItem();
-                item.Content = user.Username;
-                item.Tag = user;
-                cbUsers.Items.Add(item);
+                if(user is User costumer) 
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = costumer.Username;
+                    item.Tag = costumer;
+                    cbUsers.Items.Add(item);
+                }    
             }
-            cbUsers.Items.RemoveAt(0); // Removes Admin because nobody likes him :( (Don't need him for this) 
-
-
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
@@ -51,12 +53,46 @@ namespace TravelPal
 
         private void btnManageUsers_Click(object sender, RoutedEventArgs e)
         {
-            // ADD LATER
+            // ADD LATER - NICE TO HAVE.
         }
 
         private void btnRemoveTravel_Click(object sender, RoutedEventArgs e)
         {
+            try 
+            {
+                ListViewItem? selectedTravel = lstUserTravels.SelectedItem as ListViewItem;
 
+                if (selectedTravel == null) 
+                {
+                    throw new NullReferenceException("You need to select a travel before proceeding!");
+                }
+                else 
+                {
+ 
+                    Travel travelToRemove = (Travel)selectedTravel.Tag;
+
+                    TravelManager.RemoveTravel(travelToRemove, _user);
+
+                    //REFRESH UI
+
+                    lstUserTravels.Items.Clear();
+
+                    foreach (Travel travel in _user.Travels)
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Content = travel.GetInfo();
+                        item.Tag = travel;
+
+                        lstUserTravels.Items.Add(item);
+                    }
+
+                    MessageBox.Show("Travel removed successfully!", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);                 
+                }
+            }
+            catch (NullReferenceException ex) 
+            {
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void cbUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -72,9 +108,12 @@ namespace TravelPal
                 else 
                 {
                     User user = (User)selectedUser.Tag;
+                    _user = user;
 
                     foreach(Travel travel in user.Travels) 
                     {
+
+
 
                         ListViewItem item = new ListViewItem();
                         item.Content = travel.GetInfo();
