@@ -29,7 +29,7 @@
 
         <Label Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="ADMIN" FontSize="30" Foreground="MintCream"/>
 
-        <Button Name="btnLogout" Grid.Column="1" Grid.Row="1" Content="Log out" FontSize="16" Foreground="MintCream" Background="Transparent" BorderBrush="MintCream" Margin="15 10 15 10"/>
+        <Button Name="btnLogout" Grid.Column="1" Grid.Row="1" Content="Log out" FontSize="16" Foreground="MintCream" Background="Transparent" BorderBrush="MintCream" Margin="15 10 15 10" Click="btnLogout_Click"/>
 
         <Border Grid.Column="1" Grid.Row="2" Grid.RowSpan="6" Grid.ColumnSpan="3" BorderBrush="MintCream" Background="#A095F2"/>
 
@@ -38,9 +38,9 @@
 
         <ListView x:Name="lstUserTravels" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3" Margin="5 0 5 0"/>
 
-        <Button Name="btnManageUsers" Grid.Column="3" Grid.Row="2" Content="Manage users" FontSize="16" Foreground="MintCream" Background="Transparent" BorderBrush="MintCream" Margin="15 10 15 10"/>
-        <Button Name="btnRemoveTravel" Grid.Column="2" Grid.Row="7" Content="Remove travel" FontSize="16" Foreground="MintCream" Background="Transparent" BorderBrush="MintCream" Margin="15 10 15 10"/>
+        <Button Name="btnManageUsers" Grid.Column="3" Grid.Row="2" Content="Manage users" FontSize="16" Foreground="MintCream" Background="Transparent" BorderBrush="MintCream" Margin="15 10 15 10" Click="btnManageUsers_Click"/>
+        <Button Name="btnRemoveTravel" Grid.Column="2" Grid.Row="7" Content="Remove travel" FontSize="16" Foreground="MintCream" Background="Transparent" BorderBrush="MintCream" Margin="15 10 15 10" Click="btnRemoveTravel_Click"/>
 
-        <ComboBox Name="cbUsers" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center" Margin="5 0 0 0"/>
+        <ComboBox Name="cbUsers" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center" Margin="5 0 0 0" SelectionChanged="cbUsers_SelectionChanged"/>
     </Grid>
 </Window>
