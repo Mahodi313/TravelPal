@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using TravelPal.Managers;
 using TravelPal.Models;
 using TravelPal.User_Models;
@@ -28,16 +18,16 @@ namespace TravelPal
         {
             InitializeComponent();
 
-            foreach (var user in UserManager.users) 
+            foreach (var user in UserManager.users)
             {
 
-                if(user is User costumer) 
+                if (user is User costumer)
                 {
                     ComboBoxItem item = new ComboBoxItem();
                     item.Content = costumer.Username;
                     item.Tag = costumer;
                     cbUsers.Items.Add(item);
-                }    
+                }
             }
         }
 
@@ -58,17 +48,17 @@ namespace TravelPal
 
         private void btnRemoveTravel_Click(object sender, RoutedEventArgs e)
         {
-            try 
+            try
             {
                 ListViewItem? selectedTravel = lstUserTravels.SelectedItem as ListViewItem;
 
-                if (selectedTravel == null) 
+                if (selectedTravel == null)
                 {
                     throw new NullReferenceException("You need to select a travel before proceeding!");
                 }
-                else 
+                else
                 {
- 
+
                     Travel travelToRemove = (Travel)selectedTravel.Tag;
 
                     TravelManager.RemoveTravel(travelToRemove, _user);
@@ -86,10 +76,10 @@ namespace TravelPal
                         lstUserTravels.Items.Add(item);
                     }
 
-                    MessageBox.Show("Travel removed successfully!", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);                 
+                    MessageBox.Show("Travel removed successfully!", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
-            catch (NullReferenceException ex) 
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
@@ -97,20 +87,22 @@ namespace TravelPal
 
         private void cbUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            try 
+            try
             {
                 ComboBoxItem? selectedUser = cbUsers.SelectedItem as ComboBoxItem;
 
-                if (selectedUser == null) 
+                if (selectedUser == null)
                 {
-                    throw new NullReferenceException("You need to select user before proceeding!");
+                    throw new NullReferenceException("Selection Error!");
                 }
-                else 
+                else
                 {
                     User user = (User)selectedUser.Tag;
                     _user = user;
 
-                    foreach(Travel travel in user.Travels) 
+                    lstUserTravels.Items.Clear();
+
+                    foreach (Travel travel in user.Travels)
                     {
 
 
@@ -124,7 +116,7 @@ namespace TravelPal
                     }
                 }
             }
-            catch (NullReferenceException ex) 
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
