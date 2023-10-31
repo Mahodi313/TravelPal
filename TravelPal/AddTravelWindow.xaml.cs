@@ -155,7 +155,9 @@ namespace TravelPal
 
                 TravelManager.AddTravel(Travel, _user);
                 MessageBox.Show("Travel has been successfully booked!", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
-                               
+                
+                UpdateUI();
+
             }
 
             catch (ArgumentException aex) 
