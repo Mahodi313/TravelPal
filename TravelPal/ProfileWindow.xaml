@@ -43,16 +43,16 @@
         <Label Grid.Column="2" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Birthdate" FontSize="14" Foreground="MintCream"/>
         <Label Grid.Column="2" Grid.Row="8" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Country" FontSize="14" Foreground="MintCream"/>
 
-        <TextBox Name="txtName" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2" Height="25"/>
-        <TextBox Name="txtUsername" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2" Height="25"/>
-        <TextBox Name="txtEmail" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Height="25"/>
-        <TextBox Name="txtPassword" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2" Height="25"/>
-        <TextBox Name="txtBirthday" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="2" Height="25"/>
+        <TextBox Name="txtName" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2" Height="25" IsReadOnly="True"/>
+        <TextBox Name="txtUsername" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2" Height="25" IsReadOnly="True"/>
+        <TextBox Name="txtEmail" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Height="25" IsReadOnly="True"/>
+        <TextBox Name="txtPassword" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2" Height="25" IsReadOnly="True"/>
+        <TextBox Name="txtBirthday" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="2" Height="25" IsReadOnly="True"/>
 
         <ComboBox Name="cbCountry" Grid.Column="3" Grid.Row="8" Grid.ColumnSpan="2" Height="25" IsEnabled="False"/>
 
         <Button Name="btnEdit" Grid.Column="3" Grid.Row="9" Grid.ColumnSpan="2" Margin="10" Content="Edit" Background="Transparent" BorderBrush="MintCream" Foreground="MintCream" FontSize="14"/>
         <Button Name="btnSave" Grid.Column="3" Grid.Row="10" Grid.ColumnSpan="2" Margin="10" Content="Save" Background="Transparent" BorderBrush="MintCream" Foreground="MintCream" FontSize="14" Visibility="Hidden"/>
-        <Button Name="btnGoBack" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="15 10 15 10" Content="Go back" Background="MediumSlateBlue" BorderBrush="MintCream" Foreground="MintCream" FontSize="14"/>
+        <Button Name="btnGoBack" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="15 10 15 10" Content="Go back" Background="MediumSlateBlue" BorderBrush="MintCream" Foreground="MintCream" FontSize="14" Click="btnGoBack_Click"/>
     </Grid>
 </Window>

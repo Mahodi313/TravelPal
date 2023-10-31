@@ -34,7 +34,9 @@ namespace TravelPal
         }
         private void tbkProfile_Click(object sender, RoutedEventArgs e)
         {
-
+            ProfileWindow profileWindow = new(User);
+            profileWindow.Show();
+            Close();
         }
 
         /* When tbkInfo_Click method is clicked,

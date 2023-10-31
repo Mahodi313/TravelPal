@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TravelPal.User_Models;
 
 namespace TravelPal
 {
@@ -19,9 +20,29 @@ namespace TravelPal
     /// </summary>
     public partial class ProfileWindow : Window
     {
-        public ProfileWindow()
+        private User currentUser;
+
+        public ProfileWindow(User user)
         {
             InitializeComponent();
+            currentUser = user;
+
+            txtName.Text = user.Fullname;
+            txtUsername.Text = user.Username;
+            txtEmail.Text = user.Email;
+            txtPassword.Text = user.Password;
+            txtBirthday.Text = user.Birthday.ToString();
+
+            cbCountry.Items.Add(user.Location);
+
+            cbCountry.SelectedIndex = 0;
+        }
+
+        private void btnGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            TravelWindow travelWindow = new(currentUser);
+            travelWindow.Show();
+            Close();
         }
     }
 }
