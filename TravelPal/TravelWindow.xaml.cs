@@ -39,6 +39,8 @@ namespace TravelPal
             Close();
         }
 
+
+
         /* When tbkInfo_Click method is clicked,
          * It will show a tutorial on
          * how to use the application
@@ -84,7 +86,7 @@ namespace TravelPal
             }
             catch (NullReferenceException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning); 
             }
         }
 
