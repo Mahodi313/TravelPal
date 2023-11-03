@@ -1,16 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using TravelPal.Enums;
 using TravelPal.Managers;
 using TravelPal.Models;
@@ -27,7 +18,7 @@ namespace TravelPal
 
         public Travel Travel { get; set; }
         public List<PackingListItem> PackingItems { get; set; } = new();
-        
+
         public AddTravelWindow(IUser user)
         {
             InitializeComponent();
@@ -48,7 +39,7 @@ namespace TravelPal
 
         private void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {
-            try 
+            try
             {
                 Country selectedCountry;
                 string city = txtCity.Text;
@@ -57,7 +48,7 @@ namespace TravelPal
                 string endTime = dtrEndTime.Text;
                 string? typeOfTrip = cbTravelTypes.SelectedItem.ToString();
 
-                if (cbCountries.SelectedIndex <= -1) 
+                if (cbCountries.SelectedIndex <= -1)
                 {
                     throw new NullReferenceException("Please select a country before proceeding!");
                 }
@@ -65,11 +56,11 @@ namespace TravelPal
                 {
                     throw new ArgumentException("Please fill in all needed information!");
                 }
-                if (typeOfTrip == null) 
+                if (typeOfTrip == null)
                 {
                     throw new NullReferenceException("Please select the type of trip before proceeding!");
                 }
-           
+
                 DateTime startDate = DateTime.Parse(startTime);
                 DateTime endDate = DateTime.Parse(endTime);
 
@@ -82,10 +73,10 @@ namespace TravelPal
 
 
                 bool UserCountryCheck = TravelManager.CheckCountryEurope(_user.Location); // Checks if user lives in a europan country,
-                                                                                                 // returns true if user lives in europa.
+                                                                                          // returns true if user lives in europa.
                 bool selectedCountryCheck = TravelManager.CheckCountryEurope(selectedCountry); // Checks if user selected country to travel is european or not.
 
-                if (typeOfTrip == "Vacation") 
+                if (typeOfTrip == "Vacation")
                 {
                     if (cbxAllInclusive.IsChecked == true) // Set All inclusive to true for the travels
                     {
@@ -107,7 +98,7 @@ namespace TravelPal
                     }
                     else // Set all inclusive to false if its not checked. (Repeating code) Maybe implement method later?
                     {
-                        if (UserCountryCheck && !selectedCountryCheck) 
+                        if (UserCountryCheck && !selectedCountryCheck)
                         {
                             Travel = new Vacation(city, selectedCountry, int.Parse(amountOfTravellers), PackingItems, startDate, endDate, false);
                             Travel.PackingList.Add(new TravelDocument("Passport", true));
@@ -123,17 +114,17 @@ namespace TravelPal
                             Travel.PackingList.Add(new TravelDocument("Passport", true));
                         }
                     }
-                    
+
                 }
-                else if (typeOfTrip == "Worktrip") 
+                else if (typeOfTrip == "Worktrip")
                 {
                     string meetingDetails = txtMeetingDetails.Text;
 
-                    if (string.IsNullOrWhiteSpace(meetingDetails.Trim())) 
+                    if (string.IsNullOrWhiteSpace(meetingDetails.Trim()))
                     {
                         throw new ArgumentException("Please enter meeting details before proceeding!");
                     }
-                    else 
+                    else
                     {
                         if (UserCountryCheck && !selectedCountryCheck)
                         {
@@ -155,64 +146,64 @@ namespace TravelPal
 
                 TravelManager.AddTravel(Travel, _user);
                 MessageBox.Show("Travel has been successfully booked!", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
-                
+
                 UpdateUI();
 
             }
 
-            catch (ArgumentException aex) 
+            catch (ArgumentException aex)
             {
                 MessageBox.Show(aex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch(FormatException) 
+            catch (FormatException)
             {
-                MessageBox.Show("Invalid format for the travel dates!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Invalid input format!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (NullReferenceException nex)
             {
                 MessageBox.Show(nex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch (Exception) 
+            catch (Exception)
             {
                 MessageBox.Show("Travel Add Error!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }           
+            }
         }
 
         private void btnAddItem_Click(object sender, RoutedEventArgs e)
-        {   
+        {
 
             try
             {
                 string item = txtItem.Text;
 
-                if (string.IsNullOrWhiteSpace(item.Trim())) 
+                if (string.IsNullOrWhiteSpace(item.Trim()))
                 {
                     throw new ArgumentException("You need to enter your desired item before proceeding!");
                 }
-                else 
+                else
                 {
                     if (cbxTravelDocument.IsChecked == true)
                     {
-                        
-                        if (cbxRequired.IsChecked == true) 
+
+                        if (cbxRequired.IsChecked == true)
                         {
                             PackingItems.Add(new TravelDocument(item, true));
                         }
-                        else 
+                        else
                         {
                             PackingItems.Add(new TravelDocument(item, false));
                         }
                     }
-                    else 
+                    else
                     {
                         string quantity = txtQuantity.Text;
-                        cbxRequired.Visibility=Visibility.Hidden;
+                        cbxRequired.Visibility = Visibility.Hidden;
 
-                        if (string.IsNullOrWhiteSpace(quantity.Trim())) 
+                        if (string.IsNullOrWhiteSpace(quantity.Trim()))
                         {
                             throw new ArgumentException("Please fill in your desired amount!");
                         }
-                        if (!int.TryParse(quantity, out int value)) 
+                        if (!int.TryParse(quantity, out int value))
                         {
                             throw new FormatException("Quantity was written in an invalid format!");
                         }
@@ -226,29 +217,29 @@ namespace TravelPal
                     txtQuantity.Clear();
                     cbxTravelDocument.IsChecked = false;
                     cbxRequired.IsChecked = false;
-                    cbxRequired.Visibility=Visibility.Hidden;
+                    cbxRequired.Visibility = Visibility.Hidden;
                 }
             }
-            catch (ArgumentException ax) 
+            catch (ArgumentException ax)
             {
                 MessageBox.Show(ax.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            catch (FormatException fx) 
+            catch (FormatException fx)
             {
                 MessageBox.Show(fx.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            catch(Exception) 
+            catch (Exception)
             {
                 MessageBox.Show("Error!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
-        private void UpdateUI() 
+        private void UpdateUI()
         {
             cbCountries.SelectedIndex = -1;
-            
 
-            foreach (Country country in Enum.GetValues(typeof(Country))) 
+
+            foreach (Country country in Enum.GetValues(typeof(Country)))
             {
                 cbCountries.Items.Add(country);
             }
@@ -285,12 +276,12 @@ namespace TravelPal
             /* If travel type is selected to worktrip set meetingdetails to visible and allinclusive to invinsible
             and if vacation is selected set allinclusive box to visible and meetingdetails to invinsible*/
 
-            if (cbTravelTypes.SelectedIndex == 0) 
+            if (cbTravelTypes.SelectedIndex == 0)
             {
                 lblMeetingDetails.Visibility = Visibility.Visible;
                 txtMeetingDetails.IsEnabled = true;
 
-                cbxAllInclusive.Visibility= Visibility.Hidden;
+                cbxAllInclusive.Visibility = Visibility.Hidden;
             }
             else if (cbTravelTypes.SelectedIndex == 1)
             {
@@ -303,7 +294,7 @@ namespace TravelPal
 
         private void cbxTravelDocument_Checked(object sender, RoutedEventArgs e)
         {
-            cbxRequired.Visibility= Visibility.Visible;
+            cbxRequired.Visibility = Visibility.Visible;
             txtQuantity.IsEnabled = false;
         }
         private void cbxTravelDocument_UnChecked(object sender, RoutedEventArgs e)
